@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>echart</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="./lib/layui-v2.6.3/css/layui.css" media="all">
+    <link rel="stylesheet" href="./lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
+    <link rel="stylesheet" href="./css/public.css" media="all">
+</head>
+<body>
+<div class="content flex flex-column">
+    <div class="u-title text-white font-35 text-center pt1 font-weight">广西自然资源智慧档案库房</div>
+    <div class="flex-1 flex">
+        <!-- left -->
+        <div class="flex-1 flex flex-column">
+            <!-- 档案统计 -->
+            <div class="flex-1 mb1 ml1 mr1 p10 flex flex-column justify-center">
+                <div class="title text-main font-24"><img src="./img/u12.svg"> 档案统计</div>
+                <div class="archives text-white font-18 flex-1 flex flex-column">
+                    <div class="flex-1 flex w-100 align-center font-weight">
+                        <span>档案采集量</span>
+                        <ul class="u22 flex-1 flex pl1" id="u22-1"></ul>
+                        <span>条</span>
+                    </div>
+                    <div class="flex-1 flex w-100 align-center font-weight">
+                        <span>档案销毁量</span>
+                        <ul class="u22 flex-1 flex pl1" id="u22-2"></ul>
+                        <span>条</span>
+                    </div>
+                </div>
+            </div>
+            <!-- 库房统计 -->
+            <div class="flex-1 flex flex-column mb1 ml1 mr1 p10">
+                <div class="title text-main font-24"><img src="./img/u12.svg"> 库房统计</div>
+                <ul class="ml1 flex-1 flex flex-column justify-center">
+                    <li class="flex-1 flex align-center">
+                        <p class="u355 font-18 text-white font-weight u372">1</p>
+                        <p class="flex-1 font-18 text-white text-center u329">档案借阅量</p>
+                        <p class="text-warning font-28 font-weight w-20">102</p>
+                    </li>
+                    <li class="flex-1 flex align-center">
+                        <p class="u355 font-18 text-white font-weight u372">2</p>
+                        <p class="flex-1 font-18 text-white text-center u329">档案外借量</p>
+                        <p class="text-warning font-28 font-weight w-20">24</p>
+                    </li>
+                    <li class="flex-1 flex align-center">
+                        <p class="u355 font-18 text-white font-weight u372">3</p>
+                        <p class="flex-1 font-18 text-white text-center u329">实物外借量</p>
+                        <p class="text-warning font-28 font-weight w-20">78</p>
+                    </li>
+                    <li class="flex-1 flex align-center">
+                        <p class="u355 font-18 text-white font-weight u372">4</p>
+                        <p class="flex-1 font-18 text-white text-center u329">档案鉴定量</p>
+                        <p class="text-warning font-28 font-weight w-20">245</p>
+                    </li>
+                    <li class="flex-1 flex align-center">
+                        <p class="u355 font-18 text-white font-weight u372">5</p>
+                        <p class="flex-1 font-18 text-white text-center u329">设备统计量</p>
+                        <p class="text-warning font-28 font-weight w-20">625</p>
+                    </li>
+                </ul>
+            </div>
+            <!-- 归档量统计 -->
+            <div class="flex-1 mb1 ml1 mr1 p10">
+                <div class="title text-main font-24"><img src="./img/u12.svg"> 归档量统计</div>
+                <div class="echart" id="echart1"></div>
+            </div>
+        </div>
+        <!-- center -->
+        <div class="flex-2 flex flex-column mb1">
+            <!-- 天气 -->
+            <div class="mt3 ml2 mr1 flex" id="weather">
+                <div class="w-18 flex flex-column justify-center align-center">
+                    <img class="icon" src="./img/2.png">
+                    <p class="text-white text-center mt1">多云</p>
+                </div>
+                <div class="w-18 flex flex-column justify-center align-center">
+                    <img class="icon" src="./img/3.png">
+                    <p class="text-white text-center mt1">50%</p>
+                </div>
+                <div class="flex-1 flex flex-column justify-center align-center">
+                    <p class="text-white font-32" id="date">2021年12月7</p>
+                    <p class="text-white font-32 mt1" id="time">11:15</p>
+                </div>
+                <div class="w-18 flex flex-column justify-center align-center">
+                    <img class="icon" src="./img/4.png">
+                    <p class="text-white text-center mt1">东南风</p>
+                </div>
+                <div class="w-18 flex flex-column justify-center align-center">
+                    <img class="icon" src="./img/1.png">
+                    <p class="text-white text-center mt1">12ug/m²</p>
+                </div>
+            </div>
+            <!-- carousel -->
+            <div class="flex-1 ma1 pl1">
+                <div class="layui-carousel" id="carousel" lay-filter="carousel">
+                    <div carousel-item="">
+                        <!-- 人员流动 -->
+                        <div class="px1 pt1">
+                            <div class="echart" id="echart6"></div>
+                        </div> 
+                        <!-- 资源情况 -->
+                         <div class="px1 pt1 ">
+                            <div class="u897_div pb1 font-20 text-white text-center font-weight">计算机存储集群</div>
+                            <div class="text-main font-18">
+                                <div class="mt1">资源情况</div>
+                                <div class="flex px3">
+                                    <div class="flex-1 flex flex-column align-center justify-center border-right-main">
+                                        <div class="w-100 py1 border-bottom-main flex flex-column align-center justify-center">
+                                            <p class="font-weight font-24">4</p>
+                                            <p>服务器数量(台)</p>
+                                        </div>
+                                        <div class="w-100 py1 flex flex-column align-center justify-center">
+                                            <p class="font-weight font-24">18</p>
+                                            <p>磁盘总数(个)</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex-1 flex flex-column align-center justify-center">
+                                        <div class="w-100 py1 border-bottom-main flex flex-column align-center justify-center">
+                                            <p class="font-weight font-24">11</p>
+                                            <p>CPU总数(个)</p>
+                                        </div>
+                                        <div class="w-100 py1 flex flex-column align-center justify-center">
+                                            <p class="font-weight font-24">21</p>
+                                            <p>显示设备总数(台)</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex-1 flex flex-column justify-center">
+                                <div class="text-main px3 mt1">
+                                    <p class="my1">Core分配量</p>
+                                    <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                        <div class="layui-progress-bar bg-main" lay-percent="40%"></div>
+                                    </div>
+                                    <p class="my1">Mem分配量</p>
+                                    <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                        <div class="layui-progress-bar bg-main" lay-percent="85%"></div>
+                                    </div>
+                                    <p class="my1">CPUT分配量</p>
+                                    <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                        <div class="layui-progress-bar bg-main" lay-percent="90%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                         <!-- 各应用系统资源使用情况排行 -->
+                         <div class="px1 pt1">
+                            <div class="u897_div pb1 font-20 text-white text-center font-weight">计算机存储集群</div>
+                            <div class="text-main font-14">
+                                <div class="font-16 mt1">各应用系统资源使用情况排行</div>
+                                <div class="app-rank-th flex mt1 mb1">
+                                    <div class="w-10 bg-black py05 text-center">排名</div>
+                                    <div class="flex-1 bg-black py05 text-center">应用系统名称</div>
+                                    <div class="w-15 bg-black py05 text-center">CPU(个)</div>
+                                    <div class="w-15 bg-black py05 text-center">内存(B)</div>
+                                    <div class="w-15 bg-black py05 text-center">任务数(个)</div>
+                                    <div class="w-20 bg-black py05 text-center">任务传递时间(秒)</div>
+                                </div>
+                                <div class="app-rank-tbody" id="app-rank-tbody">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 物理可用资源 -->
+                        <div class="px1 pt1">
+                            <div class="h-100 flex flex-column">
+                                <div class="u897_div pb1 font-20 text-white text-center font-weight">计算机网络集群</div>
+                                <div class="text-main font-14 px1 flex-1 flex flex-column">
+                                    <div class="font-16 mt1">物理可用资源</div>
+                                    <div class="flex mt1">
+                                        <div class="flex-1 border-right-main">
+                                            <p class="font-32  font-weight">120</p>
+                                            <p class="font-16">节点数量(个)</p>
+                                        </div>
+                                        <div class="flex-1 border-right-main px2">
+                                            <p class="font-32  font-weight">2</p>
+                                            <p class="font-16">CPU数量(个)</p>
+                                        </div>
+                                        <div class="flex-1 border-right-main px2">
+                                            <p class="font-32  font-weight">2315</p>
+                                            <p class="font-16">内存总量(个)</p>
+                                        </div>
+                                        <div class="flex-1 px2">
+                                            <p class="font-32  font-weight">1658</p>
+                                            <p class="font-16">存储总量(个)</p>
+                                        </div>
+                                    </div>
+                                    <div class="font-16 mt3 mb3">防鼠系统高频脉冲开关情况</div>
+                                    <div class="flex-1 overflow-hidden" style="max-height: 40%;">
+                                        <ul class=" mb3 h-100 position-relative" id="pulse-box">
+                                        
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+                        <!-- 门禁状态 网络服务情况 -->
+                        <div class="px1 pt1">
+                            <div class="h-100 flex flex-column">
+                                <div class="u897_div pb1 font-20 text-white text-center font-weight">计算机网络集群</div>
+                                <div class="text-main font-14 px1 flex-1 flex flex-column">
+                                    <div class="font-16 mt1 mb1">门禁状态</div>
+                                    <div class="flex-1 overflow-hidden" style="max-height: 60%;">
+                                        <ul class="mb3 h-100 position-relative" id="access-box">
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="text-main font-14 px1 flex-1 flex flex-column">
+                                    <div class="font-16 mt1 mb1">网络服务情况</div>
+                                    <div class="flex-1 overflow-hidden" style="max-height: 60%;">
+                                        <ul class="mb3 h-100 position-relative" id="netword-box">
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+                        <!-- 1 -->
+                        <div class="px1 pt1"><img class="w-100" src="./img/cove.png"></div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- right -->
+        <div class="flex-1 flex flex-column">
+            <!-- 密集架统计 -->
+            <div class="flex-1 ml1 mr1">
+                <div class="title text-main font-24 pt1 pl1"><img src="./img/u12.svg"> 密集架统计</div>
+                <div class="echart" id="echart2"></div>
+            </div>
+            <!-- 在架档案比 -->
+            <div class="flex-1 ml1 mr1 mt2">
+                <div class="title text-main font-24 pt1 pl1"><img src="./img/u12.svg"> 在架档案比</div>
+                <div class="echart" id="echart3"></div>
+            </div>
+            <!-- 温湿度监测 -->
+            <div class="flex-1 flex flex-column mt3 ml1 mr1 pb2">
+                <div class="flex justify-between align-center">
+                    <div class="title text-main font-24 pt1 pl1"><img src="./img/u12.svg"> 温湿度监测</div>
+                    <form class="layui-form select mt1">
+                        <select lay-filter="select">
+                            <option value="1">1号库房</option>
+                            <option value="2">2号库房</option>
+                            <option value="3">3号库房</option>
+                        </select>
+                    </form>  
+                </div>
+                <div class="flex-1 flex justify-center align-center">
+                    <div class="flex-1 echart" id="echart4" style="height: 70%;"></div>
+                    <div class="flex-1 echart" id="echart5" style="height: 70%;"></div>
+                </div>
+                <div class="font-14 text-white text-center">温湿度范围：14℃~24℃   45%~60%</div>
+            </div>
+        </div>
+</div>
+
+<script src="./lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+<script src="./js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+<script src="./lib/jquery-3.4.1/jquery-3.4.1.min.js"></script>
+<script src="./js/common.js"></script>
+<script>
+    layui.use(['layer', 'echarts', 'form','carousel','element'], function () {
+        let $ = layui.jquery,
+            layer = layui.layer,
+            echarts = layui.echarts,
+            carousel = layui.carousel,
+            form = layui.form,
+            element = layui.element;
+        
+        carousel.render({
+            elem: '#carousel'
+            ,width: '100%' //设置容器宽度
+            ,height: '100%' //设置容器高度
+            ,anim: 'fade' //切换动画方式 fade default（渐隐渐显切换）
+            ,interval:'3000'//自动切换的时间间隔,不能低于800
+            ,indicator:'updown'//指示器位置
+            ,arrow:'hover'//none （始终不显示）
+            ,indicator:'none' //下方指示点
+        });
+        carousel.on('change(carousel)', function(obj){
+            echart6.clear();
+            let echart = createEchart('echart6',option6)
+            echart.resize();
+        })
+        let echart1 = createEchart('echart1',option1) //归档量统计
+        let echart2 = createEchart('echart2',option2) //密集架统计
+        let echart3 = createEchart('echart3',option3) //在架档案比
+        let echart4 = createEchart('echart4',option4) //温湿度监测
+        let echart5 = createEchart('echart5',option5) //温湿度监测
+        let echart6 = createEchart('echart6',option6) //流动人员统计
+ 
+        //walden 颜色主题  dark
+        function createEchart(id,option,theme='walden'){  
+            let echart = echarts.init(document.getElementById(id), theme);
+            echart.setOption(option);
+            return echart
+        }
+        window.onresize = function () {
+            echart1.resize();
+            echart2.resize();
+            echart3.resize();
+            echart4.resize();
+            echart5.resize();
+            echart6.resize();
+        }
+        form.on('select(select)', function(data){
+            alert(data.value)
+        });
+
+    });
+    
+</script>            
+</body>
+</html>
